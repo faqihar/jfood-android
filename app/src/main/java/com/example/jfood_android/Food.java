@@ -1,5 +1,6 @@
 package com.example.jfood_android;
 
+
 public class Food {
 
     private int id;

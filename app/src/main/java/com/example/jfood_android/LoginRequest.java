@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class LoginRequest extends StringRequest {
 
-    private static final String URL = "http://192.168.1.106:8080/customer/login";
+    private static final String URL = "http://10.0.2.2:8080/customer/login";
     private Map<String, String> params;
 
     public LoginRequest(String email, String password, Response.Listener<String> listener){
@@ -20,7 +20,7 @@ public class LoginRequest extends StringRequest {
     }
 
     @Override
-    public Map<String, String> getParams() throws AuthFailureError {
+    protected Map<String, String> getParams() throws AuthFailureError {
         return params;
     }
 }

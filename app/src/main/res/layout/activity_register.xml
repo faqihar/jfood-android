@@ -1,49 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00F3EAEA"
-    android:padding="25dp"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
     tools:context=".RegisterActivity">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="194dp"
+        android:layout_height="171dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/jfood" />
 
     <LinearLayout
-
+        android:id="@+id/nameInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView19"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_corner_box"
+        android:paddingStart="8dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="8dp"
+        android:theme="@style/TextLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView19">
 
         <EditText
             android:id="@+id/register_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="name"/>
+            android:drawableLeft="@drawable/ic_name"
+            android:drawablePadding="5dp"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:textColor="@color/textColor"
+            android:textColorHighlight="@color/textSecondary"
+            android:textColorHint="@color/textColor"
+            android:textColorLink="@color/colorPrimary" />
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/emailLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/imageView19"
+    android:layout_centerHorizontal="true"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="16dp"
+    android:background="@drawable/rounded_corner_box"
+    android:paddingStart="8dp"
+    android:paddingTop="2dp"
+    android:paddingEnd="8dp"
+    android:theme="@style/TextLabel"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/nameInputLayout">
 
         <EditText
             android:layout_marginTop="15dp"
             android:id="@+id/register_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="email"
-            android:inputType="textEmailAddress"/>
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="5dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/textColor"
+            android:textColorHighlight="@color/textSecondary"
+            android:textColorHint="@color/textColor"
+            android:textColorLink="@color/textPrimary" />
+</LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/passLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView19"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_corner_box"
+            android:paddingStart="8dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="8dp"
+            android:theme="@style/TextLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailLayout">
+
 
         <EditText
-            android:layout_marginTop="15dp"
             android:id="@+id/register_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password"
-            android:inputType="textPassword"/>
+            android:drawableStart="@drawable/ic_lock"
+            android:drawableLeft="@drawable/ic_lock"
+            android:drawablePadding="5dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="@color/textColor"
+            android:textColorHighlight="@color/textSecondary"
+            android:textColorHint="@color/textColor"
+            android:textColorLink="@color/colorPrimary" />
+        </LinearLayout>
 
         <Button
-            android:layout_marginTop="15dp"
             android:id="@+id/register_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register"/>
 
-    </LinearLayout>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_corner_button"
+            android:bottomLeftRadius="15dp"
+            android:bottomRightRadius="15dp"
+            android:text="REGISTER"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryLight"
+            android:textColorLink="@color/colorAccent"
+            android:topLeftRadius="15dp"
+            android:topRightRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passLayout" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/loginClickable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/register_button"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:lineSpacingExtra="7dp"
+            android:text="Already have an Account?\n Login Here!"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white"
+            android:textColorLink="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_button" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">jfood-android</string>
+    <string name="app_name">JFood</string>
+    <string name="button_count">Count</string>
+    <string name="button_order">Order</string>
+    <string name="installment">Installment</string>
+    <string name="item_name">Item Name:</string>
+    <string name="item_status">Item Status:</string>
+    <string name="item_price">Item Price:</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="pay_later">Pay Later</string>
+    <string name="item_category">Item Category:</string>
+    <string name="installment_period">Installment Period:</string>
+    <string name="total_price">Total Price:</string>
+    <string name="payment_method">Payment Method:</string>
+    <string name="text_view">Text View</string>
+    <string name="textview">TextView</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="action_about">About the developer</string>
+    <string name="action_logout">Logout</string>
 </resources>

@@ -1,8 +1,10 @@
 package com.example.jfood_android;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,14 +28,18 @@ import org.json.JSONObject;
 import java.util.jar.Attributes;
 
 public class RegisterActivity extends AppCompatActivity {
+    private EditText etName, etEmail, etPassword;
+    private Button btnRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        final EditText etName = (EditText) findViewById(R.id.register_name);
-        final EditText etEmail = (EditText) findViewById(R.id.register_email);
-        final EditText etPassword = (EditText) findViewById(R.id.register_password);
-        final Button btnRegister = (Button) findViewById(R.id.register_button);
+
+        etName  = findViewById(R.id.register_name);
+        etEmail = findViewById(R.id.register_email);
+        etPassword = findViewById(R.id.register_password);
+        btnRegister = findViewById(R.id.register_button);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +48,39 @@ public class RegisterActivity extends AppCompatActivity {
                 String email= etEmail.getText().toString();
                 String password = etPassword.getText().toString();
 
+                if (name.isEmpty()) {
+                    etName.setError("Name Field Required");
+                    etName.requestFocus();
+                    return;
+                }
+
+
+                if (email.isEmpty()) {
+                    etEmail.setError("Email field required");
+                    etEmail.requestFocus();
+                    return;
+                }
+
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    etEmail.setError("Please Enter a valid email");
+                    etEmail.requestFocus();
+                    return;
+                }
+
+                if (password.isEmpty()) {
+                    etPassword.setError("Password field required");
+                    etPassword.requestFocus();
+                    return;
+                }
+
+                if (password.length() < 8) {
+                    etPassword.setError("Password should be at least 8 characters long");
+                    etPassword.requestFocus();
+                    return;
+                }
+
+
+
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                      public void onResponse(String response) {
@@ -49,9 +88,11 @@ public class RegisterActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject != null) {
                                 Toast.makeText(RegisterActivity.this, "Register Sucessful", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                             } catch (JSONException e) {
-                                Toast.makeText(RegisterActivity.this, "Register Failed", Toast.LENGTH_SHORT).show();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                            builder.setMessage("Register failed!").create().show();
                             }
                         }
                     };
@@ -59,6 +100,14 @@ public class RegisterActivity extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
              }
+        });
+
+        final TextView loginClickable = (TextView) findViewById(R.id.loginClickable);
+        loginClickable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
     }
 }

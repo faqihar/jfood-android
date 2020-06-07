@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,14 +27,32 @@ public class LoginActivity extends AppCompatActivity {
 
         final EditText etEmail = findViewById(R.id.login_email);
         final EditText etPassword = findViewById(R.id.login_password);
-        final Button btnLogin = findViewById(R.id.login_button);
-        final TextView tvRegister = findViewById(R.id.login_register);
+        Button btnLogin = findViewById(R.id.login_button);
+        TextView tvRegister = findViewById(R.id.login_register);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = etEmail.getText().toString();
-                final String password = etPassword.getText().toString();
+                String email = etEmail.getText().toString();
+                String password = etPassword.getText().toString();
+
+                if (email.isEmpty()) {
+                    etEmail.setError("Email field required");
+                    etEmail.requestFocus();
+                    return;
+                }
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    etEmail.setError("Please Enter a valid email");
+                    etEmail.requestFocus();
+                    return;
+                }
+
+                if (password.isEmpty()) {
+                    etPassword.setError("Password field required");
+                    etPassword.requestFocus();
+                    return;
+                }
+
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -41,14 +60,14 @@ public class LoginActivity extends AppCompatActivity {
                         try{
                             JSONObject jsonResponse = new JSONObject(response);
                             if(jsonResponse != null){
-                                Toast.makeText(LoginActivity.this, "Login Sucessful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.putExtra("currentUserId", jsonResponse.getInt("id"));
                                 startActivity(intent);
                                 finish();
                             }
                         }
                         catch (JSONException e){
-                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                             Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                         }
                     }

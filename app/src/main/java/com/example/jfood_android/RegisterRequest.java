@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterRequest extends StringRequest {
-    private static String URL = "http://192.168.1.106:8080/customer/register";
+    private static String URL = "http://10.0.2.2:8080/customer/register";
     private Map<String, String> params;
 
     public RegisterRequest(String name, String email, String password, Response.Listener<String> listener){
